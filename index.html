@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!-- 告诉浏览器这是 HTML5 文档 -->
+<html lang="zh-CN">
+<!-- lang 属性声明页面语言，方便搜索引擎和浏览器理解 -->
+<head>
+    <!-- head 里放的是"页面设置"，用户看不到这些内容 -->
+    <meta charset="UTF-8">
+    <!-- 字符编码，UTF-8 支持中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 让网页在手机上也正常显示，不加的话手机端会缩放 -->
+    <title>个人主页</title>
+    <!-- 浏览器标签栏显示的标题 -->
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    <!-- 浏览器标签栏的小图标 (favicon) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 CSS 样式文件 -->
+    <!-- 引入 Google 字体，让中英文字显示更精致 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- body 里的内容用户都能看到 -->
+
+    <!-- ===== 顶部导航栏 ===== -->
+    <!-- nav 表示导航，固定定位在页面顶部不动 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- logo 文字，点击回到顶部 href="#hero" 表示跳转到 id="hero" 的元素 -->
+            <a href="#hero" class="nav-logo">&lt;/&gt;</a>
+
+            <!-- ul = unordered list，无序列表；这里是导航菜单 -->
+            <ul class="nav-menu">
+                <!-- li = list item，列表项；a = 超链接 -->
+                <li><a href="#hero" class="nav-link active">首页</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#experience" class="nav-link">经历</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+
+            <!-- 暗色模式切换按钮 -->
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+
+            <!-- 手机端的"汉堡菜单"图标，点击展开导航 -->
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+                <!-- 三条横线，用 CSS 画出来的 -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Hero 首屏 ===== -->
+    <!-- section 表示一个区域，id 用于导航跳转定位 -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <!-- 装饰性的背景渐变 -->
+        <div class="hero-content">
+            <!-- 头像外框，加了一个边框 -->
+            <div class="hero-avatar">
+                <!-- img = image，src 是图片地址，alt 是加载失败时的替代文字 -->
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=default" alt="头像">
+            </div>
+            <!-- h1 是最重要的一级标题 -->
+            <h1 class="hero-title">你好，我是 <span class="highlight">[你的名字]</span></h1>
+            <!-- p = 段落；这里放打字机效果的文字 -->
+            <p class="hero-subtitle"><span class="typing-text"></span><span class="cursor">|</span></p>
+            <!-- 两个按钮链接 -->
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">查看作品</a>
+                <a href="#contact" class="btn btn-outline">联系我</a>
+            </div>
+            <!-- 向下滚动的提示 -->
+            <div class="scroll-hint">↓ 向下滚动</div>
+        </div>
+    </section>
+
+    <!-- ===== 关于我 ===== -->
+    <!-- reveal 类用于滚动动画：页面往下滚时渐入 -->
+    <section id="about" class="section reveal">
+        <div class="container">
+            <!-- 区域标题：h2 是二级标题 -->
+            <h2 class="section-title">关于<span class="highlight">我</span></h2>
+            <!-- 两栏布局 -->
+            <div class="about-grid">
+                <!-- 左边：文字 -->
+                <div class="about-text">
+                    <p>我就读于吉林大学集成电路专业，是一名对 Web 开发充满热情的初学者。</p>
+                    <p>目前正在系统学习前端技术，业余时间也喜欢 3D 建模和设计，
+                       相信技术与艺术的结合能带来更好的用户体验。</p>
+                    <!-- 个人信息卡片 -->
+                    <div class="about-info">
+                        <!-- span 是行内标签，用来给一段文字中的部分内容加样式 -->
+                        <div><span class="info-label">姓名</span> [你的名字]</div>
+                        <div><span class="info-label">学校</span> <a href="https://www.jlu.edu.cn" target="_blank">吉林大学</a></div>
+                        <!-- target="_blank" 表示在新标签页打开链接 -->
+                        <div><span class="info-label">专业</span> 集成电路</div>
+                        <div><span class="info-label">状态</span> 🚀 学习中</div>
+                    </div>
+                </div>
+                <!-- 右边：统计数字 -->
+                <div class="about-stats">
+                    <!-- data-target 是自定义属性，JS 会读取它来执行数字滚动动画 -->
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="3">0</span>
+                        <span class="stat-label">个月学习</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="5">0</span>
+                        <span class="stat-label">个小项目</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">% 热爱</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 技能 ===== -->
+    <section id="skills" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">我的<span class="highlight">技能</span></h2>
+            <!-- 技能卡片网格 -->
+            <div class="skills-grid">
+                <!-- 每个 skill-card 是一张卡片 -->
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML</h3>
+                    <!-- 进度条：外层是灰色背景条，内层是紫色填充条 -->
+                    <!-- data-width 存放目标宽度，JS 会读取 -->
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <p>语义化标签、表单结构、可访问性</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS</h3>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="65"></div>
+                        </div>
+                        <span class="skill-percent">65%</span>
+                    </div>
+                    <p>Flex/Grid、动画、响应式设计</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="45"></div>
+                        </div>
+                        <span class="skill-percent">45%</span>
+                    </div>
+                    <p>DOM 操作、ES6+、基础算法</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🧊</div>
+                    <h3>Blender</h3>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-width="55"></div>
+                        </div>
+                        <span class="skill-percent">55%</span>
+                    </div>
+                    <p>建模、材质、基础渲染</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 学习经历（时间线） ===== -->
+    <section id="experience" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">学习<span class="highlight">经历</span></h2>
+            <!-- 时间线布局：左边一条竖线，右边卡片 -->
+            <div class="timeline">
+                <!-- 每个 timeline-item 是一个时间节点 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <!-- 竖线上的小圆点 -->
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026.07</span>
+                        <!-- 日期和内容 -->
+                        <h3>开始学习 Web 开发</h3>
+                        <p>从 HTML 和 CSS 入门，搭建了第一个个人网站</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026.06</span>
+                        <h3>Blender 3D 建模实践</h3>
+                        <p>完成凯旋门等多个 3D 模型的建模练习</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026.05</span>
+                        <h3>踏上编程之旅</h3>
+                        <p>决定系统学习前端开发，每天坚持写代码</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 项目展示 ===== -->
+    <section id="projects" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">我的<span class="highlight">项目</span></h2>
+            <div class="project-grid">
+                <!-- 项目卡片 1 -->
+                <div class="project-card">
+                    <!-- 卡片顶部的渐变色区域 -->
+                    <div class="project-img" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <span class="project-icon">🖥️</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>个人主页</h3>
+                        <p>用 HTML/CSS/JS 从零搭建的个人介绍网站</p>
+                        <!-- 标签列表 -->
+                        <div class="project-tags">
+                            <span>HTML</span><span>CSS</span><span>JS</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- a 标签把整个卡片变成了可点击的链接 -->
+                <a href="https://你的链接.com" target="_blank" class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <span class="project-icon">🏗️</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>凯旋门模型</h3>
+                        <p>使用 Blender 完成的 3D 建筑建模作品</p>
+                        <div class="project-tags">
+                            <span>Blender</span><span>3D</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- 项目卡片 3 -->
+                <div class="project-card">
+                    <div class="project-img" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <span class="project-icon">🚀</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>下一个项目</h3>
+                        <p>努力学习中，更多精彩即将到来</p>
+                        <div class="project-tags">
+                            <span>敬请期待</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 联系方式 ===== -->
+    <section id="contact" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">联系<span class="highlight">我</span></h2>
+            <div class="contact-wrap">
+                <!-- 左边：联系表单 -->
+                <!-- form 是表单，action 不填表示提交到当前页面 -->
+                <form class="contact-form" id="contactForm">
+                    <!-- required 表示这个字段不能为空 -->
+                    <input type="text" placeholder="你的名字" required>
+                    <input type="email" placeholder="你的邮箱" required>
+                    <!-- textarea 是多行文本输入框，rows 控制行数 -->
+                    <textarea rows="5" placeholder="说点什么..." required></textarea>
+                    <button type="submit" class="btn btn-primary">发送 ✉️</button>
+                </form>
+                <!-- 右边：联系方式列表 -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <h4>邮箱</h4>
+                            <p>email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4>位置</h4>
+                            <p>中国</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🐱</span>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p>github.com/yourname</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 友情链接 ===== -->
+    <section class="section friend-links reveal">
+        <div class="container">
+            <h2 class="section-title">友情<span class="highlight">链接</span></h2>
+            <!-- 一行一排的链接卡片 -->
+            <div class="friend-grid">
+                <a href="https://github.com" target="_blank" class="friend-card">
+                    <span class="friend-icon">🐱</span>
+                    <span class="friend-name">GitHub</span>
+                </a>
+                <a href="https://developer.mozilla.org/zh-CN/" target="_blank" class="friend-card">
+                    <span class="friend-icon">📖</span>
+                    <span class="friend-name">MDN</span>
+                </a>
+                <a href="https://stackoverflow.com" target="_blank" class="friend-card">
+                    <span class="friend-icon">💬</span>
+                    <span class="friend-name">Stack Overflow</span>
+                </a>
+                <!-- img 标签显示 B 站官方图标 -->
+                <a href="https://www.bilibili.com" target="_blank" class="friend-card">
+                    <img class="friend-icon" src="https://www.bilibili.com/favicon.ico" alt="B站">
+                    <span class="friend-name">B站</span>
+                </a>
+                <a href="https://www.jlu.edu.cn" target="_blank" class="friend-card">
+                    <img class="friend-icon" src="https://www.jlu.edu.cn/favicon.ico" alt="吉林大学">
+                    <span class="friend-name">吉林大学</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="footer">
+        <!-- footer 表示底部区域 -->
+        <div class="container">
+            <!-- &copy; 是版权符号 © 的 HTML 写法 -->
+            <p>&copy; 2026 [你的名字]. 用 ❤️ 和代码打造</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <!-- ===== 手机底部导航 ===== -->
+    <!-- 只在手机上显示，固定在底部 -->
+    <nav class="bottom-nav">
+        <a href="#hero" class="bottom-link active">🏠<span>首页</span></a>
+        <a href="#about" class="bottom-link">👤<span>关于</span></a>
+        <a href="#skills" class="bottom-link">⚡<span>技能</span></a>
+        <a href="#projects" class="bottom-link">📁<span>项目</span></a>
+        <a href="#contact" class="bottom-link">✉️<span>联系</span></a>
+    </nav>
+
+    <!-- 引入 JavaScript 文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
